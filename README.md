@@ -1,3 +1,5 @@
+![Coffee Shop](/res/img//CoffeeShop.png)
+
 CoffeeShop
 ==========
 
