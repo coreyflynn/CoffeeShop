@@ -1,36 +1,3 @@
-# apt-get update
-exec { "apt-get update":
-  path => "/usr/bin",
-  # refreshonly => true
-}
-
-# get fish
-exec { "get_fish":
-	command => "wget http://fishshell.com/files/2.0.0/linux/Ubuntu_12.04/i586/fish_2.0.0-201305151006_i386.deb",
-	path => "/usr/bin",
-	#path => "/usr/bin:/usr/sbin:/bin:/usr/local/bin",
-	# refreshonly => true,
-}
-
-# install fish
-exec { "install_fish":
-	command => "sudo dpkg -i fish_2.0.0-201305151006_i386.deb",
-	path => "/usr/bin",
-	#path => "/usr/bin:/usr/sbin:/bin:/usr/local/bin",
-	# refreshonly => true,
-	require => Exec["get_fish"]
-}
-
-# default script to configure fish
-file { '/usr/bin/configure_fish':
-ensure => present,
-owner => 'root',
-group => 'root',
-mode => '0755',
-source => 'file:///vagrant/res/fish/configure_fish.sh',
-require => Exec["install_fish"]
-}
-
 # numpy
 package { "python-numpy":
 	ensure => present,
@@ -79,8 +46,8 @@ package { "ipython":
 	require => Exec["apt-get update"]
 }
 
-#git
-package { "git":
+#jinja
+package { "python-jinja2":
 	ensure => present,
 	require => Exec["apt-get update"]
 }
@@ -93,5 +60,6 @@ package { "python-pip":
 
 # pip blessings
 exec { "pip install blessings":
-  path => "/usr/bin"
+  path => "/usr/bin",
+  require => Package["python-pip"]
 }
