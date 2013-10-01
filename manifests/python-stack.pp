@@ -40,6 +40,12 @@ package { "python-pymongo":
 	require => Exec["apt-get update"]
 }
 
+#biopython
+package { "python-biopython":
+	ensure => present,
+	require => Exec["apt-get update"]
+}
+
 #ipython
 package { "ipython":
 	ensure => present,
