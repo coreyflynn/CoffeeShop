@@ -12,7 +12,7 @@ CoffeeShop depends on a working install of both [virtualbox](https://www.virtual
 
 How do I use it?
 ================
-Once you have virtualbox](https://www.virtualbox.org/) and [vagrant](http://www.vagrantup.com/) installed, just clone this repository and type
+Once you have [virtualbox](https://www.virtualbox.org/) and [vagrant](http://www.vagrantup.com/) installed, just clone this repository and type
 
 ```
 vagrant up
