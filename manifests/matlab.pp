@@ -1,9 +1,16 @@
+#make sure unzip is installed
+package { "unzip":
+	ensure => present,
+	require => Exec["apt-get update"]
+}
+
 # copy matlib files
 file { "/xchip":
     ensure => "directory",
     owner  => "root",
     group  => "root",
     mode   => "0755",
+    require => Package["unzip"]
 }
 
 file { "/xchip/cogs":
