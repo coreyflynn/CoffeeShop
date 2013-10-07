@@ -42,24 +42,23 @@ file { "/home/vagrant/mcr":
     owner  => "root",
     group  => "root",
     mode   => "0755",
-    require => File["/xchip/cogs/matlib/mcr"]
 }
 
-# run script to get the matlab mcr
-exec { "get_mcr":
-	command => "wget -O /home/vagrant/mcr/MCR_R2012a_glnx86_installer.zip http://www.mathworks.com/supportfiles/MCR_Runtime/R2012a/MCR_R2012a_glnx86_installer.zip",
-	path => "/usr/bin",
-	creates => "/home/vagrant/mcr/MCR_R2012a_glnx86_installer.zip",
-	require => File["/home/vagrant/mcr"]
-}
+# # run script to get the matlab mcr
+# exec { "get_mcr":
+# 	command => "wget -O /home/vagrant/mcr/MCR_R2012a_glnx86_installer.zip http://www.mathworks.com/supportfiles/MCR_Runtime/R2012a/MCR_R2012a_glnx86_installer.zip",
+# 	path => "/usr/bin",
+# 	creates => "/home/vagrant/mcr/MCR_R2012a_glnx86_installer.zip",
+# 	require => File["/home/vagrant/mcr"]
+# }
 
-# unzip the matlab mcr
-exec { "unzip_mcr":
-	command => "unzip -d /home/vagrant/mcr/ /home/vagrant/mcr/MCR_R2012a_glnx86_installer.zip",
-	path => "/usr/bin",
-	creates => "/home/vagrant/mcr/install",
-	require => Exec["get_mcr"]
-}
+# # unzip the matlab mcr
+# exec { "unzip_mcr":
+# 	command => "unzip -d /home/vagrant/mcr/ /home/vagrant/mcr/MCR_R2012a_glnx86_installer.zip",
+# 	path => "/usr/bin",
+# 	creates => "/home/vagrant/mcr/install",
+# 	require => Exec["get_mcr"]
+# }
 
 # copy install parameters to the unzipped path
 file { '/home/vagrant/mcr/installer_input.txt':
@@ -67,8 +66,7 @@ file { '/home/vagrant/mcr/installer_input.txt':
 	owner => 'root',
 	group => 'root',
 	mode => '0755',
-	source => 'file:///vagrant/res/matlab/installer_input.txt',
-	require => Exec["unzip_mcr"]
+	source => 'file:///vagrant/res/matlab/installer_input.txt'
 }
 
 # install the mcr
@@ -78,9 +76,9 @@ exec { "make_mcr_subdir":
 	require => File["/home/vagrant/mcr/installer_input.txt"]
 }
 
-exec { "install_mcr":
-	command => "sudo sh /home/vagrant/mcr/install -inputFile /home/vagrant/mcr/installer_input.txt",
-	path => "/usr/bin",
-	creates => "/xchip/cogs/matlib/mcr/2012a_717/v717/license.txt",
-	require => Exec["make_mcr_subdir"]
-}
+# exec { "install_mcr":
+# 	command => "sudo sh /home/vagrant/mcr/install -inputFile /home/vagrant/mcr/installer_input.txt",
+# 	path => "/usr/bin",
+# 	creates => "/xchip/cogs/matlib/mcr/2012a_717/v717/license.txt",
+# 	require => Exec["make_mcr_subdir"]
+# }
