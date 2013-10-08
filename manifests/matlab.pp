@@ -4,20 +4,32 @@ package { "unzip":
 	require => Exec["apt-get update"]
 }
 
+#make sure bc is installed
+package { "bc":
+    ensure => present,
+    require => Exec["apt-get update"]
+}
+
+#make sure gnuplot is installed
+package { "gnuplot":
+    ensure => present,
+    require => Exec["apt-get update"]
+}
+
 # copy matlib files
 file { "/xchip":
     ensure => "directory",
-    owner  => "root",
-    group  => "root",
-    mode   => "0755",
+    owner  => "vagrant",
+    group  => "vagrant",
+    mode   => "755",
     require => Package["unzip"]
 }
 
 file { "/xchip/cogs":
     ensure => "directory",
-    owner  => "root",
-    group  => "root",
-    mode   => "0755",
+    owner  => "vagrant",
+    group  => "vagrant",
+    mode   => "755",
     require => File["/xchip"]
 }
 
@@ -31,17 +43,17 @@ exec { "copy_matlib_bin":
 #create mcr directories
 file { "/xchip/cogs/matlib/mcr":
     ensure => "directory",
-    owner  => "root",
-    group  => "root",
-    mode   => "0755",
+    owner  => "vagrant",
+    group  => "vagrant",
+    mode   => "755",
     require => Exec["copy_matlib_bin"]
 }
 
 file { "/home/vagrant/mcr":
     ensure => "directory",
-    owner  => "root",
-    group  => "root",
-    mode   => "0755",
+    owner  => "vagrant",
+    group  => "vagrant",
+    mode   => "755",
 }
 
 # # run script to get the matlab mcr
@@ -63,15 +75,15 @@ file { "/home/vagrant/mcr":
 # copy install parameters to the unzipped path
 file { '/home/vagrant/mcr/installer_input.txt':
 	ensure => present,
-	owner => 'root',
-	group => 'root',
-	mode => '0755',
+	owner => 'vagrant',
+	group => 'vagrant',
+	mode => '755',
 	source => 'file:///vagrant/res/matlab/installer_input.txt'
 }
 
 # install the mcr
 exec { "make_mcr_subdir":
-	command => "mkdir -p /xchip/cogs/matlib/mcr/2012a_717/v717",
+	command => "mkdir -p /xchip/cogs/matlib/mcr/versions/v717",
 	path => "/bin",
 	require => File["/home/vagrant/mcr/installer_input.txt"]
 }

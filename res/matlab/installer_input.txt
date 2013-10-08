@@ -40,7 +40,7 @@
 ## Set the desired value for destinationFolder and 
 ## uncomment the line. 
 
-destinationFolder=/xchip/cogs/matlib/mcr/2012a_717/v717
+destinationFolder=/xchip/cogs/matlib/mcr/versions/v717
 
 ##
 ## SPECIFY FILE INSTALLATION KEY 
