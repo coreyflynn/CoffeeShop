@@ -84,8 +84,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     puppet.manifest_file  = "main.pp"
   end
 
-  # run external shell scripts
-  config.vm.provision "shell", path: "res/matlab/install_mcr.sh"
   # Enable provisioning with chef solo, specifying a cookbooks path, roles
   # path, and data_bags path (all relative to this Vagrantfile), and adding
   # some recipes and/or roles.

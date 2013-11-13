@@ -1,6 +1,6 @@
 import 'python-stack'
 import 'fish'
-import vb
+import 'vdb'
 
 # apt-get update
 exec { "apt-get update":

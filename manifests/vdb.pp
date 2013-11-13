@@ -30,7 +30,7 @@ file { "/xchip/cogs/data/vdb":
     require => File["/xchip/cogs/data"]
 }
 
-file { "/xchip/cogs/data/vdb/data":
+file { "/xchip/cogs/data/vdb/mongo":
     ensure => "directory",
     owner  => "root",
     group  => "root",
@@ -38,18 +38,11 @@ file { "/xchip/cogs/data/vdb/data":
     require => File["/xchip/cogs/data/vdb"]
 }
 
-file { "/xchip/cogs/data/vdb/data/mongo":
-    ensure => "directory",
-    owner  => "root",
-    group  => "root",
-    mode   => "0755",
-    require => File["/xchip/cogs/data/vdb/data"]
-}
-
 file { '/xchip/cogs/data/vdb/mongo/default_fields.gmt':
     ensure => present,
     owner => 'root',
     group => 'root',
     mode => '0755',
-    source => 'file:///vagrant/res/vdb/default_fields.gmt'
+    source => 'file:///vagrant/res/vdb/default_fields.gmt',
+    require => File["/xchip/cogs/data/vdb/mongo"]
 }
