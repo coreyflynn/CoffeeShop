@@ -1,7 +1,6 @@
 import 'python-stack'
 import 'fish'
 import vb
-# import 'matlab'
 
 # apt-get update
 exec { "apt-get update":
