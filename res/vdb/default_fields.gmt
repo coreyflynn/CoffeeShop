@@ -1,0 +1,7 @@
+cell_info	cell_id	cell_id	cell_type	lincs_status	cell_lineage	cell_histology															
+gene_info	pr_id	pr_id	pr_gene_symbol	pr_gene_title	pr_gene_id	is_lm	is_bing														
+inst_info	distil_id	distil_id	pert_id	cell_id	pert_type	pert_desc	pert_time	pert_time_unit	pert_dose	pert_dose_unit	qc_f_logp	qc_iqr	qc_slope	count_mean	count_cv	bead_set	det_mode	det_plate	det_well	rna_plate	rna_well
+pert_info	pert_id	pert_id	pert_iname	pert_type	cell_id	alt_name	num_sig	num_gold	num_inst	pert_summary											
+plate_info	roast_id	roast_id	brew_id	bead_batch	cell_id	det_mode	pert_plate	rep_id	pert_time												
+sig_info	sig_id	sig_id	pert_id	pert_iname	cell_id	pert_type	pert_itime	pert_idose	is_gold	distil_cc_q75	distil_ss	ngenes_modulated_dn_lm	ngenes_modulated_up_lm	pct_self_rank_q25	distil_nsample	pool_id	brew_prefix						
+tail_info	query_id	query_id	metric																		
